@@ -28,8 +28,59 @@ public class Main {
 //        System.out.println(isLeapYear(2400));
 //        System.out.println(isLeapYear(1855));
 
-        System.out.println(getDaysInMonth(2, 2400));
+        System.out.println(getDurationString(4800));
 	}
+
+    private static String getDurationString (int minutes, int seconds) {
+        if (seconds>59 || seconds< 0 || minutes <0){
+            return "Invalid value";
+        }
+        int hours = minutes/60;
+        minutes = minutes%60;
+        return hours+"h "+minutes+"m "+seconds+"s";
+    }
+
+    private static String getDurationString (int seconds) {
+        if (seconds< 0){
+            return "Invalid value";
+        }
+        int minutes = seconds/60;
+        seconds = seconds%60;
+        return getDurationString(minutes, seconds);
+    }
+
+
+
+	private static double calFeetAndInchesToCentimeters(double feet, double inches) {
+        double centimeters = 0;
+        if (feet<0 || inches<0 || inches > 12){
+            return -1;
+        }
+        centimeters = inches*2.54 + feet*12*2.54;
+        return centimeters;
+    }
+
+    private static double calFeetAndInchesToCentimeters(double inches) {
+        double centimeters = 0;
+        if (inches<0 || inches > 12){
+            return -1;
+        }
+        centimeters = inches*2.54;
+        return centimeters;
+    }
+
+    private static boolean hasTeen(int num1, int num2, int num3) {
+        return isTeen(num1) || isTeen(num2) || isTeen(num3);
+    }
+
+    private static boolean isTeen(int num){
+        return num >=13 && num<=19;
+    }
+
+    public static boolean hasEqualSum(int value1, int value2, int value3) {
+
+        return (value1+value2) == value3;
+    }
 
     private static void printFinalScore(int score, int levelCompleted, int bonus) {
 		int finalScore = score +(levelCompleted*bonus);
